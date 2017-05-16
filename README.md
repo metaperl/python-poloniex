@@ -5,6 +5,10 @@ Inspired by [this](http://pastebin.com/8fBVpjaj) wrapper written by 'oipminer'
 Extended from [s4w3d0ff](https://github.com/s4w3d0ff/python-poloniex/)'s
 version
 
+## Beware of IP Ban
+
+Dont retry too often - https://www.reddit.com/r/BitcoinMarkets/comments/6b9f0p/poloniex_banning_trading_bots_ips_despite_call/
+
 ## Extensions from s4w3d0ff
 
 ### Unique nonce generation

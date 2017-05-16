@@ -189,7 +189,7 @@ class Poloniex(object):
     # -----------------Meat and Potatos---------------------------------------
 
     # https://pypi.python.org/pypi/retry/
-    @retry(requests.exceptions.RequestException, max_delay=30, backoff=5)
+    @retry(requests.exceptions.RequestException, delay=90)
     def __call__(self, command, args={}):
         """
         Main Api Function
@@ -239,8 +239,8 @@ class Poloniex(object):
             # return decoded json
             try:
                 text = ret.text
-                if command not in self.nolog:
-                    self.logger.debug(
+                # if command not in self.nolog:
+                self.logger.debug(
                         """
 <{0}>
  <args>{1}</args>
