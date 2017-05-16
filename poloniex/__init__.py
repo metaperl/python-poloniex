@@ -239,8 +239,8 @@ class Poloniex(object):
             # return decoded json
             try:
                 text = ret.text
-                # if command not in self.nolog:
-                self.logger.debug(
+                if command not in self.nolog:
+                    self.logger.debug(
                         """
 <{0}>
  <args>{1}</args>
@@ -256,6 +256,10 @@ class Poloniex(object):
                 return struct
             except NameError:
                 return _loads(text, parse_float=str)
+            except:
+                self.logger.debug("Unexpected error:", sys.exc_info()[0])
+                self.logger.debug("<error>%s</error>", text)
+                raise
 
         # public?
         elif command in PUBLIC_COMMANDS:
@@ -284,6 +288,10 @@ class Poloniex(object):
                 return struct
             except NameError:
                 return _loads(text, parse_float=str)
+            except:
+                self.logger.debug("Unexpected error:", sys.exc_info()[0])
+                self.logger.debug("<error>%s</error>", text)
+                raise
         else:
             raise ValueError("Invalid Command!")
 
